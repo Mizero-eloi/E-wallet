@@ -8,7 +8,7 @@ function LeftSideBar(props) {
     setActiveLink(link);
   };
   return (
-    <div className="bg-white w-[20%] h-screen font-medium  text-base">
+    <div className="bg-white w-full h-screen font-medium  text-base">
       <div className="flex justify-center pt-9">
         <h3 className="text-lg text-gray-900 font-bold">E-wallet</h3>
       </div>
@@ -81,10 +81,10 @@ function LeftSideBar(props) {
 
           <Link
             className="ml-2 text-lg"
-            to="/activities"
+            to="/"
             onClick={() => handleClick("activities")}
           >
-            Activities
+            Home
           </Link>
         </div>
       </div>
