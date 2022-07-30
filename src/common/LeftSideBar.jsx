@@ -149,11 +149,11 @@ function LeftSideBar(props) {
             </svg>
           )}
           <Link
-            to="/transactions"
+            to="/Transfer"
             className="ml-5 text-lg"
             onClick={() => handleClick("transactions")}
           >
-            Transactions
+            Transfer
           </Link>
         </div>
       </div>

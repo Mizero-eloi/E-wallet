@@ -2,6 +2,7 @@ import "./App.css";
 import LeftSideBar from "./common/LeftSideBar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import Transfers from "./components/Transfers";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <div className="ml-[45px] w-[75%]">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Transfer" element={<Transfers />} />
         </Routes>
 
         {/* divs */}
