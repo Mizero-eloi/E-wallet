@@ -5,7 +5,7 @@ import Income from "../common/Income";
 
 function InformationComp(props) {
   return (
-    <div className="w-1/2 bg-green-500">
+    <div className="w-1/2">
       <Balance />
       <Income />
       <Expense />

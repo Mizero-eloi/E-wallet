@@ -4,7 +4,7 @@ function Balance(props) {
   return (
     <>
       <div
-        className={`w-[84%] h-[151px] rounded-2xl float-right  bg-gray-900 bg-[url('../../public/images/1.png')] bg-no-repeat bg-cover`}
+        className={`w-full h-[151px] rounded-2xl float-right  bg-gray-900 bg-[url('../../public/images/1.png')] bg-no-repeat bg-cover`}
       >
         {/* information div  */}
         <div className="ml-[6%] text-white ">
