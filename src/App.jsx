@@ -5,14 +5,14 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="bg-gray-50 flex">
-      <div className="bg-blue-50 w-[17%]">
+    <div className="bg-gray-100 flex">
+      <div className="bg-blue-50 w-[20%]">
         <LeftSideBar />
       </div>
 
       {/* The routes  */}
 
-      <div className="ml-[45px] w-[75%] bg-red-400">
+      <div className="ml-[45px] w-[75%]">
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

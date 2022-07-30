@@ -4,7 +4,7 @@ import CreditCard from "../common/CreditCard";
 function AddTransaction(props) {
   return (
     <div className="w-1/2 h-10 ">
-      <div className="w-[84%] bg-white rounded-3xl p-9">
+      <div className="w-[90%] bg-white rounded-3xl p-9">
         <CreditCard />
         <h2 className="w-[20%] m-auto text-xl relative top-[16px] font-semibold text-gray-900">
           Transaction{" "}

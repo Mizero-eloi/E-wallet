@@ -2,7 +2,7 @@ import React from "react";
 
 function Expense(props) {
   return (
-    <div className="w-[84%] h-[151px] rounded-2xl float-right  bg-white  bg-no-repeat bg-cover mt-5 p-[15px]">
+    <div className="w-full h-[151px] rounded-2xl float-right  bg-white  bg-no-repeat bg-cover mt-5 p-[15px]">
       <p className="text-gray-900 font-semibold">Expense</p>
 
       {/* Expense list  */}
