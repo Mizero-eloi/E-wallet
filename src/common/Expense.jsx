@@ -1,17 +1,17 @@
 import React from "react";
 
-function Income(props) {
+function Expense(props) {
   return (
     <div className="w-[84%] h-[151px] rounded-2xl float-right  bg-white  bg-no-repeat bg-cover mt-5 p-[15px]">
-      <p className="text-gray-900 font-semibold">Income</p>
+      <p className="text-gray-900 font-semibold">Expense</p>
 
-      {/* Income list  */}
+      {/* Expense list  */}
       <div>
-        {/* Income item  */}
+        {/* Expense item  */}
         <div className="mt-4 ">
           <div className="flex font-semibold">
-            <h2 className=" text-gray-800 w-[75%]">Salary</h2>{" "}
-            <span className="relative right-[56px]">$ 5,000.00 </span>
+            <h2 className=" text-gray-800 w-[75%]">Rent</h2>{" "}
+            <span className="relative right-[56px]">$ 4.00 </span>
           </div>
           <p className="mt-2 text-gray-700">
             Lorem, ipsum dolor sit amet consectetur
@@ -24,4 +24,4 @@ function Income(props) {
   );
 }
 
-export default Income;
+export default Expense;
