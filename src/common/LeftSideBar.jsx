@@ -255,13 +255,13 @@ function LeftSideBar(props) {
           )}
 
           <Link
-            to="/account"
+            to="/allExpenses"
             className="mr-6 relative left-4 text-lg"
             onClick={() => {
               handleClick("account");
             }}
           >
-            Account
+            All expenses
           </Link>
         </div>
       </div>
