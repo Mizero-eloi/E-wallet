@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import TopNav from "../common/TopNav";
 import TransferButton from "../common/TransferButton";
-import PopUpModal from "./PopUpModal";
+import PopUpModal from "../common/PopUpModal";
+import TransferForm from "../common/TransferForm";
 
 function Transfers(props) {
   const [isViewModal, setIsViewModal] = useState(false);
@@ -13,7 +14,13 @@ function Transfers(props) {
   return (
     <>
       <TopNav />
-      {isViewModal && <PopUpModal toggleModal={handleToggleModal} />}
+      {isViewModal && (
+        <PopUpModal
+          title={"Transfer"}
+          Component={TransferForm}
+          toggleModal={handleToggleModal}
+        />
+      )}
       <div className="p-3 mt-[106px] w-[90%]">
         {/* header */}
         <h2 className="font-semibold text-xl w-[8%] relative top-[-89px]">

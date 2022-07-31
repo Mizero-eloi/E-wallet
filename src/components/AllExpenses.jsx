@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import TopNav from "../common/TopNav";
 import TransferButton from "../common/TransferButton";
-import PopUpModal from "./PopUpModal";
+import PopUpModal from "../common/PopUpModal";
+import Form from "../common/Form";
 
 function AllExpenses(props) {
   const [isViewModal, setIsViewModal] = useState(false);
@@ -13,7 +14,13 @@ function AllExpenses(props) {
   return (
     <>
       <TopNav />
-      {isViewModal && <PopUpModal toggleModal={handleToggleModal} />}
+      {isViewModal && (
+        <PopUpModal
+          title={"Add Expense"}
+          Component={Form}
+          toggleModal={handleToggleModal}
+        />
+      )}
       <div className="p-3 mt-[106px] w-[90%]">
         {/* header */}
         <h2 className="font-semibold text-xl w-[15%] relative top-[-89px]">
