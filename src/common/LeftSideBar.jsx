@@ -201,11 +201,11 @@ function LeftSideBar(props) {
           )}
 
           <Link
-            to="/documents"
+            to="/allIncomes"
             className="relative left-4 text-lg"
             onClick={() => handleClick("documents")}
           >
-            Documents
+            All incomes
           </Link>
         </div>
       </div>
