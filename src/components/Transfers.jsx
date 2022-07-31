@@ -7,13 +7,13 @@ function Transfers(props) {
   const [isViewModal, setIsViewModal] = useState(false);
 
   function handleToggleModal() {
-    setIsViewModal(true);
+    setIsViewModal(!isViewModal);
   }
 
   return (
     <>
       <TopNav />
-      {/* <PopUpModal /> */}
+      {isViewModal && <PopUpModal toggleModal={handleToggleModal} />}
       <div className="p-3 mt-[106px] w-[90%]">
         {/* header */}
         <h2 className="font-semibold text-xl w-[8%] relative top-[-89px]">
