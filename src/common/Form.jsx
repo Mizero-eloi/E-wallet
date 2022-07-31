@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { GlobalContext } from "./../context/GlobalState";
 
 function Form(props) {
+  const [label, setLabel] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [description, setDescription] = useState("");
+
+  // calling the addTransaction
+  const { addTransaction } = useContext(GlobalContext);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const newTransaction = {
+      id: Math.floor(Math.random() * 10000000),
+      label,
+      amount,
+      description,
+    };
+
+    addTransaction(newTransaction);
+  }
+
   return (
-    <form action="">
+    <form onSubmit={handleSubmit}>
       <div
         className=" 
     flex
@@ -33,6 +54,7 @@ function Form(props) {
       text-gray-500
       placeholder-gray-500
       "
+            onChange={(e) => setLabel(e.target.value)}
           />
         </div>
         <div className="flex flex-col mt-[16px]">
@@ -43,7 +65,7 @@ function Form(props) {
             Amount
           </label>
           <input
-            type="text"
+            type="number"
             placeholder=" 5000"
             className="
 
@@ -56,6 +78,7 @@ function Form(props) {
       text-gray-500
       placeholder-gray-500
       "
+            onChange={(e) => setAmount(e.target.value)}
           />
         </div>
         <div className="flex flex-col mt-[16px]">
@@ -78,6 +101,7 @@ function Form(props) {
       text-gray-500
       placeholder-gray-500
       "
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
       </div>

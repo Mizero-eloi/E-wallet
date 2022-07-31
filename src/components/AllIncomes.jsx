@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TopNav from "../common/TopNav";
 import TransferButton from "../common/TransferButton";
 import PopUpModal from "../common/PopUpModal";
 import Form from "../common/Form";
+import { GlobalContext } from "./../context/GlobalState";
 
 function AllIncomes(props) {
   const [isViewModal, setIsViewModal] = useState(false);
+  const { transactions } = useContext(GlobalContext);
+  console.log("Transactions", transactions);
 
   function handleToggleModal() {
     setIsViewModal(!isViewModal);
