@@ -3,7 +3,7 @@ import TopNav from "../common/TopNav";
 import TransferButton from "../common/TransferButton";
 import PopUpModal from "./PopUpModal";
 
-function Transfers(props) {
+function AllExpenses(props) {
   const [isViewModal, setIsViewModal] = useState(false);
 
   function handleToggleModal() {
@@ -16,8 +16,8 @@ function Transfers(props) {
       {isViewModal && <PopUpModal toggleModal={handleToggleModal} />}
       <div className="p-3 mt-[106px] w-[90%]">
         {/* header */}
-        <h2 className="font-semibold text-xl w-[8%] relative top-[-89px]">
-          Transfers
+        <h2 className="font-semibold text-xl w-[15%] relative top-[-89px]">
+          All Expenses
         </h2>
 
         {/* transfer button */}
@@ -25,7 +25,7 @@ function Transfers(props) {
           <TransferButton onToggleModal={handleToggleModal} />
         </div>
 
-        {/* tables for transfers  */}
+        {/* tables for AllExpenses  */}
 
         <div className="mt-[-19px]">
           <div className="flex flex-col">
@@ -116,4 +116,4 @@ function Transfers(props) {
   );
 }
 
-export default Transfers;
+export default AllExpenses;

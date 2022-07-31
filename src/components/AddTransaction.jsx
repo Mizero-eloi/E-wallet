@@ -12,7 +12,7 @@ function AddTransaction(props) {
         <div className="w-[12%] h-[6px] m-auto bg-gray-500 relative top-[17px] left-[12px] rounded-xl"></div>
         <form action="">
           <div
-            className="
+            className=" 
           flex
           flex-col
           p-[15px]
