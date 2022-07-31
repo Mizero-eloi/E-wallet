@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TopNav from "../common/TopNav";
 import TransferButton from "../common/TransferButton";
-import PopUpModal from "./PopUpModal";
+import PopUpModal from "../common/PopUpModal";
+import Form from "../common/Form";
+import { GlobalContext } from "./../context/GlobalState";
 
 function AllIncomes(props) {
   const [isViewModal, setIsViewModal] = useState(false);
+  const { transactions } = useContext(GlobalContext);
+  console.log("Transactions", transactions);
 
   function handleToggleModal() {
     setIsViewModal(!isViewModal);
@@ -13,7 +17,13 @@ function AllIncomes(props) {
   return (
     <>
       <TopNav />
-      {isViewModal && <PopUpModal toggleModal={handleToggleModal} />}
+      {isViewModal && (
+        <PopUpModal
+          title={"Add income"}
+          Component={Form}
+          toggleModal={handleToggleModal}
+        />
+      )}
       <div className="p-3 mt-[106px] w-[90%]">
         {/* header */}
         <h2 className="font-semibold text-xl w-[15%] relative top-[-89px]">
