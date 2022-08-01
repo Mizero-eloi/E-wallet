@@ -5,6 +5,7 @@ function TransferForm(props) {
   const [amount, setAmount] = useState(0);
   const [walletId, setWalletid] = useState("");
   const { addTransfer } = useContext(GlobalContext);
+  const { transfers } = useContext(GlobalContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -12,6 +13,8 @@ function TransferForm(props) {
     const newTransfer = {
       walletId,
       amount: +amount,
+      no: transfers.length + 1,
+      date: "12/09/2022",
     };
     console.log("Form submitted", newTransfer);
 
@@ -64,7 +67,7 @@ function TransferForm(props) {
               Amount
             </label>
             <input
-              type="text"
+              type="number"
               placeholder=" 5000"
               className="
 

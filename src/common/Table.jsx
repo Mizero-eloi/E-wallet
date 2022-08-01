@@ -1,6 +1,6 @@
 import React from "react";
 
-function Table({ columns, row }) {
+function Table({ columns, row, paths }) {
   return (
     <table className="min-w-full">
       <thead className="border-b bg-gray-900 ">
@@ -18,21 +18,14 @@ function Table({ columns, row }) {
       <tbody>
         {row.map((data) => (
           <tr className="border-b bg-white p-[30px]">
-            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-              1
-            </td>
-            <td className="text-sm text-gray-900 font-light px-6 py-6 whitespace-nowrap">
-              {data["label"]}
-            </td>
-            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {data["amount"]}
-            </td>
-            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {data["description"]}
-            </td>
-            <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {data["date"]}
-            </td>
+            {paths.map((path) => {
+              console.log("data path", path);
+              return (
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  {data[path]}
+                </td>
+              );
+            })}
           </tr>
         ))}
       </tbody>

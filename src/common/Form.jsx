@@ -8,6 +8,7 @@ function Form(props) {
 
   // calling the addTransaction
   const { addTransaction } = useContext(GlobalContext);
+  const { transactions } = useContext(GlobalContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,6 +18,7 @@ function Form(props) {
       label,
       amount: +amount,
       description,
+      no: transactions.length + 1,
       // date: new Date(),
     };
 

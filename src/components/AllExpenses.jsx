@@ -47,6 +47,7 @@ function AllExpenses(props) {
                   <Table
                     columns={["No", "Label", "Amount", "Description", "Date"]}
                     row={expenses}
+                    paths={["no", "label", "amount", "description", "date"]}
                   />
                 </div>
               </div>

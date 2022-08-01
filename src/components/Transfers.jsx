@@ -47,6 +47,7 @@ function Transfers(props) {
                   <Table
                     columns={["No", "Amount", "Wallet Id", "Date"]}
                     row={transfers}
+                    paths={["no", "amount", "walletId", "date"]}
                   />
                 </div>
               </div>
