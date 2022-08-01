@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import TopNav from "../common/TopNav";
-import TransferButton from "../common/TransferButton";
 import PopUpModal from "../common/PopUpModal";
 import Form from "../common/Form";
 import { GlobalContext } from "./../context/GlobalState";
+import Button from "../common/Button";
 
 function AllIncomes(props) {
   const [isViewModal, setIsViewModal] = useState(false);
   const { transactions } = useContext(GlobalContext);
-  console.log("Transactions", transactions);
+  const incomes = transactions.filter((transaction) => transaction.amount > 0);
 
   function handleToggleModal() {
     setIsViewModal(!isViewModal);
@@ -32,7 +32,7 @@ function AllIncomes(props) {
 
         {/* transfer button */}
         <div className="flex flex-row-reverse">
-          <TransferButton onToggleModal={handleToggleModal} />
+          <Button onToggleModal={handleToggleModal} label={"+ Add"} />
         </div>
 
         {/* tables for AllIncomes  */}
@@ -49,71 +49,54 @@ function AllIncomes(props) {
                           scope="col"
                           className="text-sm font-medium text-white px-6 py-4 text-left"
                         >
-                          #
+                          N<sup className="underline">o</sup>
                         </th>
                         <th
                           scope="col"
                           className="text-sm font-medium text-white px-6 py-6 text-left"
                         >
-                          First
+                          Label
                         </th>
                         <th
                           scope="col"
                           className="text-sm font-medium text-white px-6 py-4 text-left"
                         >
-                          Last
+                          Amount
                         </th>
                         <th
                           scope="col"
                           className="text-sm font-medium text-white px-6 py-4 text-left"
                         >
-                          Handle
+                          Description
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium text-white px-6 py-4 text-left"
+                        >
+                          Date
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-b bg-white p-[30px]">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          1
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-6 whitespace-nowrap">
-                          Mark
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Otto
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          @mdo
-                        </td>
-                      </tr>
-                      <tr className="bg-white border-b">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          2
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-6 whitespace-nowrap">
-                          Jacob
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Thornton
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          @fat
-                        </td>
-                      </tr>
-                      <tr className="bg-white border-b">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                          3
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-6 whitespace-nowrap">
-                          Larry
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          Wild
-                        </td>
-                        <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                          @twitter
-                        </td>
-                      </tr>
+                      {incomes.map((expense) => (
+                        <tr className="border-b bg-white p-[30px]">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            1
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-6 whitespace-nowrap">
+                            {expense.label}
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {expense.amount}
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {expense.description}
+                          </td>
+                          <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {expense.date}
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>

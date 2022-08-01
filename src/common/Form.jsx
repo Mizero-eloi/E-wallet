@@ -17,6 +17,7 @@ function Form(props) {
       label,
       amount,
       description,
+      // date: new Date(),
     };
 
     addTransaction(newTransaction);
