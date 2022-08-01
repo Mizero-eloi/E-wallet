@@ -22,16 +22,16 @@ function Table({ columns, row }) {
               1
             </td>
             <td className="text-sm text-gray-900 font-light px-6 py-6 whitespace-nowrap">
-              {data.label}
+              {data["label"]}
             </td>
             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {data.amount}
+              {data["amount"]}
             </td>
             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {data.description}
+              {data["description"]}
             </td>
             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              {data.date}
+              {data["date"]}
             </td>
           </tr>
         ))}

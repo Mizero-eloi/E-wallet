@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TopNav from "../common/TopNav";
 import TransferButton from "../common/TransferButton";
 import PopUpModal from "../common/PopUpModal";
 import TransferForm from "../common/TransferForm";
 import Table from "../common/Table";
+import { GlobalContext } from "../context/GlobalState";
 
 function Transfers(props) {
   const [isViewModal, setIsViewModal] = useState(false);
+
+  const { transfers } = useContext(GlobalContext);
+  console.log("Transfers", transfers);
 
   function handleToggleModal() {
     setIsViewModal(!isViewModal);
@@ -42,7 +46,7 @@ function Transfers(props) {
                 <div className="overflow-hidden">
                   <Table
                     columns={["No", "Amount", "Wallet Id", "Date"]}
-                    row={[]}
+                    row={transfers}
                   />
                 </div>
               </div>
