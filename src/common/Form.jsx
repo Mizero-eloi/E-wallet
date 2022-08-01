@@ -15,7 +15,7 @@ function Form(props) {
     const newTransaction = {
       id: Math.floor(Math.random() * 10000000),
       label,
-      amount,
+      amount: +amount,
       description,
       // date: new Date(),
     };

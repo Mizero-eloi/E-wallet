@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+import { moneyFormatter } from "../utils/moneyFormatter";
 
 function CreditCard(props) {
+  const { transactions } = useContext(GlobalContext);
+  const amounts = transactions.map((transaction) => transaction.amount);
+  const total = amounts.reduce((acc, item) => {
+    return acc + item;
+  }, 0);
   return (
     <div className="w-[59%] h-[130px] m-auto mt-[-83px] mb-[22px] rounded-xl bg-gray-700 bg-[url('../../images/2.png')] bg-no-repeat bg-cover p-3">
       {/* logo  */}
@@ -70,7 +77,7 @@ function CreditCard(props) {
         <p className=" mt-3 font-semibold">
           2930 &nbsp;7680 &nbsp; 8690 &nbsp;6794
         </p>
-        <p className=" mt-3">$ 7,126.00</p>
+        <p className=" mt-3">{moneyFormatter(total)}</p>
       </div>
     </div>
   );

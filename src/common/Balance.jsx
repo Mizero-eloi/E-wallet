@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
+import { moneyFormatter } from "./../utils/moneyFormatter";
 
 function Balance(props) {
+  const { transactions } = useContext(GlobalContext);
+  const amounts = transactions.map((transaction) => transaction.amount);
+  const total = amounts.reduce((acc, item) => {
+    return acc + item;
+  }, 0);
+
+  console.log("the total balance", total);
+
+  const income = amounts
+    .filter((item) => item > 0)
+    .reduce((acc, item) => (acc += item), 0);
+
+  const expense =
+    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
+    -1;
+
   return (
     <>
       <div
@@ -10,7 +28,7 @@ function Balance(props) {
         <div className="ml-[6%] text-white ">
           <p className=" mt-[10px] font-semibold">Balance</p>
           <h2 className="mt-[17px] text-white text-4xl font-mono">
-            $ 7,126.00{" "}
+            {moneyFormatter(total)}
           </h2>
 
           {/* income and expenses container  */}
@@ -46,7 +64,7 @@ function Balance(props) {
                 </div>
                 <span className="text-sm font-mono mt-[20px]">
                   {" "}
-                  + $ 2,234.00{" "}
+                  + {moneyFormatter(income)}{" "}
                 </span>
               </div>
 
@@ -79,7 +97,7 @@ function Balance(props) {
                 </div>
                 <span className="text-sm font-mono mt-[20px]">
                   {" "}
-                  - $ 2,234.00{" "}
+                  {moneyFormatter(expense)}{" "}
                 </span>
               </div>
             </div>
