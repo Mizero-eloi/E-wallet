@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalState";
+import { moneyFormatter } from "../utils/moneyFormatter";
 
 function Expense(props) {
   const { transactions } = useContext(GlobalContext);
@@ -15,10 +16,12 @@ function Expense(props) {
       }
     >
       <div className="text-gray-900 font-semibold flex justify-between">
-        <p className="w-[15%]">Income</p>
-        <Link to="/allExpenses" className="w-[15%] relative right-[68px]">
-          See all
-        </Link>
+        <p className="w-[15%]">Expenses</p>
+        {expenses.length > 0 && (
+          <Link to="/allExpenses" className="w-[15%] relative right-[68px]">
+            See all
+          </Link>
+        )}
       </div>
 
       {/* Expense list  */}
@@ -30,14 +33,14 @@ function Expense(props) {
         )}
         {/* Expense item  */}
         {expenses.map((e) => (
-          <div className="mt-4 ">
+          <div className="mt-4">
             <div className="flex font-semibold">
-              <h2 className=" text-gray-800 w-[75%]">Rent</h2>{" "}
-              <span className="relative right-[56px]">$ 4.00 </span>
+              <h2 className=" text-gray-800 w-[75%]">{e.label}</h2>{" "}
+              <span className="relative right-[56px]">
+                {moneyFormatter(e.amount)}{" "}
+              </span>
             </div>
-            <p className="mt-2 text-gray-700">
-              Lorem, ipsum dolor sit amet consectetur
-            </p>
+            <p className="mt-2 text-gray-700">{e.description}</p>
             {/* border line  */}
             <div className="w-[75%] h-[2px] bg-gray-400 mt-[15px]"></div>
           </div>
