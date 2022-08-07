@@ -13,9 +13,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    <div
-      className={isAuthenticated ? "App bg-gray-100 flex" : "App bg-gray-100"}
-    >
+    <div className={isAuthenticated && "App bg-gray-100 flex"}>
       {" "}
       <GlobalProvider>
         {isAuthenticated && (
