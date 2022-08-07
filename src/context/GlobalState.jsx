@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 // Initial state
-const initialState = { transactions: [] };
+const initialState = { transactions: [], transfers: [] };
 
 // create context
 export const GlobalContext = createContext(initialState);
@@ -23,12 +23,19 @@ export function GlobalProvider({ children }) {
     dispatch({ type: "ADD_TRANSACTION", payload: transaction });
   }
 
+  // Add transfer
+  function addTransfer(transfer) {
+    dispatch({ type: "ADD_TRANSFER", payload: transfer });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
+        transfers: state.transfers,
         addTransaction,
         deleteTransaction,
+        addTransfer,
       }}
     >
       {children}

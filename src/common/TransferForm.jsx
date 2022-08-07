@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 function TransferForm(props) {
+  const [amount, setAmount] = useState(0);
+  const [walletId, setWalletid] = useState("");
+  const { addTransfer } = useContext(GlobalContext);
+  const { transfers } = useContext(GlobalContext);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const newTransfer = {
+      walletId,
+      amount: +amount,
+      no: transfers.length + 1,
+      date: "12/09/2022",
+    };
+    console.log("Form submitted", newTransfer);
+
+    // saving the new transfer
+    addTransfer(newTransfer);
+  }
   return (
     <>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div
           className=" 
           flex
@@ -36,6 +56,7 @@ function TransferForm(props) {
             text-gray-500
             placeholder-gray-500
             "
+              onChange={(e) => setWalletid(e.target.value)}
             />
           </div>
           <div className="flex flex-col mt-[16px]">
@@ -46,7 +67,7 @@ function TransferForm(props) {
               Amount
             </label>
             <input
-              type="text"
+              type="number"
               placeholder=" 5000"
               className="
 
@@ -59,6 +80,7 @@ function TransferForm(props) {
             text-gray-500
             placeholder-gray-500
             "
+              onChange={(e) => setAmount(e.target.value)}
             />
           </div>
         </div>
