@@ -8,6 +8,7 @@ import AllExpenses from "./components/AllExpenses";
 import { GlobalProvider } from "./context/GlobalState";
 import SignUpForm from "./common/SignUpForm";
 import { useState } from "react";
+import LogInForm from "./common/LogInForm";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -31,6 +32,7 @@ function App() {
             <Route path="/allIncomes" element={<AllIncomes />} />
             <Route path="/allExpenses" element={<AllExpenses />} />
             <Route path="/signup" element={<SignUpForm />} />
+            <Route path="/login" element={<LogInForm />} />
           </Routes>
 
           {/* divs */}
