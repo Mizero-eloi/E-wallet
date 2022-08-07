@@ -6,23 +6,33 @@ import Transfers from "./components/Transfers";
 import AllIncomes from "./components/AllIncomes";
 import AllExpenses from "./components/AllExpenses";
 import { GlobalProvider } from "./context/GlobalState";
+import SignUpForm from "./common/SignUpForm";
+import { useState } from "react";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
-    <div className="App bg-gray-100 flex">
+    <div
+      className={isAuthenticated ? "App bg-gray-100 flex" : "App bg-gray-100"}
+    >
+      {" "}
       <GlobalProvider>
-        <div className="bg-blue-50 w-[20%]">
-          <LeftSideBar />
-        </div>
+        {isAuthenticated && (
+          <div className="bg-blue-50 w-[20%]">
+            <LeftSideBar />
+          </div>
+        )}
 
         {/* The routes  */}
 
-        <div className="ml-[45px] w-[75%]">
+        <div className={isAuthenticated && "ml-[45px] w-[75%]"}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Transfer" element={<Transfers />} />
-            <Route path="/AllIncomes" element={<AllIncomes />} />
-            <Route path="/AllExpenses" element={<AllExpenses />} />
+            <Route path="/transfers" element={<Transfers />} />
+            <Route path="/allIncomes" element={<AllIncomes />} />
+            <Route path="/allExpenses" element={<AllExpenses />} />
+            <Route path="/signup" element={<SignUpForm />} />
           </Routes>
 
           {/* divs */}

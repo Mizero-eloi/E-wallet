@@ -1,10 +1,12 @@
 import React from "react";
 
-function List({ Tag, itemclasses, list }) {
+function List({ Tag, itemclasses, list, OnClick, attributes }) {
   return (
     <>
       {list.map((item) => (
-        <Tag className={itemclasses}>{item["data"]}</Tag>
+        <Tag {...attributes} className={itemclasses} onClick={OnClick}>
+          {item["data"]}
+        </Tag>
       ))}
     </>
   );
