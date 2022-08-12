@@ -74,7 +74,7 @@ function LogInForm(props) {
         {/* the sign up form  */}
 
         <h2 className="w-[33%] text-4xl text-center m-auto relative top-[83px]">
-          Sign up to{" "}
+          Log in to{" "}
           <span className="text-blue-700 text-3xl font-semibold">E-wallet</span>
         </h2>
         <form>
@@ -111,7 +111,7 @@ function LogInForm(props) {
             </button>
             <div className="ml-12 mt-[35px] flex">
               <p className="text-gray-500">Already have an account ?</p>
-              <Link to="/login" className="w-[36%] font-semibold">
+              <Link to="/signup" className="w-[36%] font-semibold">
                 {" "}
                 &nbsp;Sign up
               </Link>
