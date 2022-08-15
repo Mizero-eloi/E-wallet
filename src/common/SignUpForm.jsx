@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import SignUpInput from "./SignUpInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Joi from "joi-browser";
+import { register } from "../services/userService";
+import _ from "lodash";
+import { toast } from "react-toastify";
 
 function SignUpForm(props) {
   const [customer, setCustomer] = useState({
@@ -10,6 +13,8 @@ function SignUpForm(props) {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const [errors, setErrors] = useState({});
   const schema = {
     username: Joi.string().min(3).max(20).required(),
@@ -17,8 +22,7 @@ function SignUpForm(props) {
     password: Joi.string().min(4).max(20).required(),
   };
 
-  const validateForm = (event) => {
-    event.preventDefault();
+  const validateForm = () => {
     const result = Joi.validate(customer, schema, { abortEarly: false });
     console.log(result);
     const { error } = result;
@@ -71,6 +75,29 @@ function SignUpForm(props) {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const errors = validateForm();
+    if (!_.isEmpty(errors)) return;
+
+    // creating the use
+    createUser();
+  };
+
+  const createUser = async () => {
+    try {
+      const response = await register(customer);
+
+      console.log("The response from the server", response);
+      localStorage.setItem("ewallet", response.headers["x-auth-token"]);
+      toast.info("User created successfully");
+      navigate("/");
+    } catch (ex) {
+      console.log("Something went wrong", ex.response);
+      toast.error("Something went wrong ");
+    }
+  };
+
   return (
     <>
       <div className="w-[39%] m-auto">
@@ -115,7 +142,7 @@ function SignUpForm(props) {
             )}
             <button
               className="mt-8 py-[17px] px-[20px] w-[81%] relative left-[50px] rounded-3xl outline-none  font-semibold bg-gray-900 text-white"
-              onClick={validateForm}
+              onClick={handleSubmit}
             >
               {" "}
               Sign up
