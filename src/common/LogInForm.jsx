@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import SignUpInput from "./SignUpInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Joi from "joi-browser";
+import _ from "lodash";
+import { login } from "./../services/authService";
+import { toast } from "react-toastify";
 
 function LogInForm(props) {
+  const navigate = useNavigate();
   const [customer, setCustomer] = useState({
     username: "",
     password: "",
@@ -15,8 +19,7 @@ function LogInForm(props) {
     password: Joi.string().min(4).max(20).required(),
   };
 
-  const validateForm = (event) => {
-    event.preventDefault();
+  const validateForm = () => {
     const result = Joi.validate(customer, schema, { abortEarly: false });
     console.log(result);
     const { error } = result;
@@ -68,6 +71,29 @@ function LogInForm(props) {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const errors = validateForm();
+    if (!_.isEmpty(errors)) return;
+
+    // creating the use
+    logInUser();
+  };
+
+  const logInUser = async () => {
+    try {
+      const response = await login(customer);
+
+      console.log("The response from the server", response);
+      localStorage.setItem("ewallet", response.headers["x-auth-token"]);
+      toast.info("login successfully");
+      navigate("/");
+    } catch (ex) {
+      console.log("Something went wrong", ex.response);
+      toast.error("Something went wrong ");
+    }
+  };
+
   return (
     <>
       <div className="w-[39%] m-auto">
@@ -104,7 +130,7 @@ function LogInForm(props) {
             )}
             <button
               className="mt-8 py-[17px] px-[20px] w-[81%] relative left-[50px] rounded-3xl outline-none  font-semibold bg-gray-900 text-white"
-              onClick={validateForm}
+              onClick={handleSubmit}
             >
               {" "}
               Log in
