@@ -11,7 +11,7 @@ import { useState } from "react";
 import LogInForm from "./common/LogInForm";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   return (
     <div className={isAuthenticated && "App bg-gray-100 flex"}>
@@ -31,8 +31,8 @@ function App() {
             <Route path="/transfers" element={<Transfers />} />
             <Route path="/allIncomes" element={<AllIncomes />} />
             <Route path="/allExpenses" element={<AllExpenses />} />
-            <Route path="/signup" element={<SignUpForm />} />
-            <Route path="/login" element={<LogInForm />} />
+            {/* <Route path="/signup" element={<SignUpForm />} />
+            <Route path="/login" element={<LogInForm />} /> */}
           </Routes>
 
           {/* divs */}
